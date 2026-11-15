@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>For Aashvi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&display=swap">
+<style>
+:root{--bg:#FFF6EC;--ink:#1B1736;--soft:#5E5A78;--card:#FFFFFF;--line:#1B1736;--pop:#7B5CFF;--pop-ink:#FFFFFF;--gold:#FFC93C;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17132E;--ink:#FFF6EC;--soft:#B9B4D6;--card:#241E45;--line:#FFF6EC;--pop:#A28BFF;--pop-ink:#17132E}}
+:root[data-theme="dark"]{--bg:#17132E;--ink:#FFF6EC;--soft:#B9B4D6;--card:#241E45;--line:#FFF6EC;--pop:#A28BFF;--pop-ink:#17132E}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;display:flex;align-items:center;justify-content:center;overflow-x:hidden}
+main{width:100%;max-width:440px;padding:20px;text-align:center}
+h1{font-size:clamp(2.2rem,9vw,3.2rem);line-height:1.05;margin:0 0 14px;font-weight:800;letter-spacing:-.02em}
+p{font-size:1.1rem;line-height:1.5;margin:0 0 22px;color:var(--soft)}
+.ticket{background:var(--card);border:3px solid var(--line);border-radius:18px;padding:14px;margin:0 0 20px;box-shadow:6px 6px 0 var(--gold);transform:rotate(-1.2deg)}
+.ticket:nth-of-type(even){transform:rotate(1.2deg)}
+.photo{aspect-ratio:4/3;border:2px dashed var(--soft);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--soft);font-size:.95rem;margin-bottom:12px;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover}
+.tag{font-weight:800;font-size:1.5rem;margin:0 0 4px;color:var(--ink)}
+.cap{margin:0;font-size:1rem;color:var(--soft)}
+button,.btn{font:inherit;font-weight:700;font-size:1.1rem;border:3px solid var(--line);border-radius:999px;padding:14px 26px;cursor:pointer;background:var(--pop);color:var(--pop-ink);text-decoration:none;display:inline-block;min-height:52px}
+button.alt,.btn.alt{background:var(--card);color:var(--ink)}
+button:focus-visible,.btn:focus-visible{outline:4px solid var(--gold);outline-offset:3px}
+.row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.opts{display:grid;gap:12px}
+.opts button{background:var(--card);color:var(--ink);text-align:left;border-radius:16px;box-shadow:4px 4px 0 var(--gold)}
+.bar{height:8px;border:2px solid var(--line);border-radius:99px;margin:0 0 14px;overflow:hidden}.bar i{display:block;height:100%;background:var(--gold)}.ch{font-weight:700;margin:0 0 12px;color:var(--soft)}.badge{display:inline-block;font-size:.8rem;background:var(--gold);color:#1B1736;border-radius:99px;padding:2px 10px;vertical-align:middle}.chips{margin:0 0 24px}.chip{border:2px solid var(--line);border-radius:99px;padding:6px 14px;font-size:.95rem}.cap+.cap{margin-top:6px}.dots{margin-top:22px;font-size:.9rem;color:var(--soft)}
+.c{position:fixed;top:-20px;width:10px;height:14px;z-index:9;animation:fall 2.6s ease-in forwards;pointer-events:none}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+@media (prefers-reduced-motion:reduce){.c{display:none}}
+</style>
+</head>
+<body>
+<main id="app"></main>
+<script>
+// ---- EDIT THESE ----
+var PHONE = "";            // your number, e.g. "+14085551234" so her answers text straight to you
+var NAME = "Aashvi";
+var PHOTOS = [];           // optional: data-URI images for each memory, in order
+var MESSAGE = "Aashvi, you said you might move back to India, and I didn’t know what to do, so I got on a plane. Since then you’ve made airports, parking spots, and Costco runs feel like the best part of my week. I want to keep going, with a label on it.";
+// --------------------
+var memories = [
+ {ch:"Visit 1",t:"The airport",badge:"",lines:["You picked me up without knowing what I looked like.","(You also never answered my FaceTime calls.)"]},
+ {ch:"Visit 1",t:"Gracias Madre",badge:"our regular spot",lines:["You needed 3 drinks just to talk to me.","Look at us now."]},
+ {ch:"Visit 1",t:"République, The Grove, Malibu",badge:"",lines:["You tested my Gujarati. (Eye roll.)","I judged your parking.","Your eyes popped talking about a scalpel."]},
+ {ch:"Visit 1",t:"Roots",badge:"",lines:["You got a sneak peek at me being a foodie."]},
+ {ch:"Visit 1",t:"Ubatuba Acai, Holey Grail, your hospital",badge:"the highlight",lines:["Dogs, a donut, and you showing me your parking spot.","The happiest I’ve ever seen you."]},
+ {ch:"Visit 2",t:"Tierra Mia, Top Golf, Costco",badge:"",lines:["We didn’t know we’d make it.","You still went out of your way to meet me for coffee, then we picked out glasses at Costco."]},
+ {ch:"Your birthday",t:"So I came to you",badge:"",lines:["You kept saying you’d move back to India.","I didn’t know what to do, but you were different.","So I flew out. We figured it out, and here we are."]}
+];
+var chips = ["Dave & Buster’s","Time will tell","Ok bye","50/50 for rent"];
+var step = 0, answers = {gf:"", food:""};
+var app = document.getElementById("app");
+
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function confetti(){
+  var cols=["#7B5CFF","#FFC93C","#FF6B9A","#3DDBB4"];
+  for(var i=0;i<60;i++){var s=document.createElement("span");s.className="c";
+    s.style.left=Math.random()*100+"vw";s.style.background=cols[i%4];
+    s.style.animationDelay=Math.random()*.6+"s";document.body.appendChild(s);
+    setTimeout(function(e){e.remove()},3600,s);}
+}
+function go(n){step=n;render();}
+function smsLink(){
+  var body = (answers.gf==="yes" ? "Yes! 🥰 " : "Let’s talk about it 💛 ") + (answers.food ? "Dinner: "+answers.food+"." : "");
+  return "sms:"+PHONE+"?&body="+encodeURIComponent(body);
+}
+function render(){
+  var h="";
+  if(step===0){
+    h='<h1>Hi '+NAME+'. Remember the airport?</h1><p>I made you something. It takes about two minutes.</p><button id="n">Open it</button>';
+  } else if(step<=memories.length){
+    var m=memories[step-1], img=PHOTOS[step-1]?'<img alt="" src="'+PHOTOS[step-1]+'">':'Photo goes here';
+    h='<div class="bar"><i style="width:'+Math.round(step/memories.length*100)+'%"></i></div><p class="ch">'+esc(m.ch)+'</p><div class="ticket"><div class="photo">'+img+'</div><p class="tag">'+esc(m.t)+(m.badge?' <span class="badge">'+esc(m.badge)+'</span>':'')+'</p>'+m.lines.map(function(x){return '<p class="cap">'+esc(x)+'</p>'}).join("")+'</div><button id="n">Next</button>';
+  } else if(step===memories.length+1){
+    h='<h1>One more thing.</h1><p>'+esc(MESSAGE)+'</p><div class="row chips">'+chips.map(function(c){return '<span class="chip">'+esc(c)+'</span>'}).join("")+'</div><button id="n">Keep going</button>';
+  } else if(step===memories.length+2){
+    h='<h1>Aashvi, will you be my girlfriend?</h1><div class="row"><button id="yes">Yes!</button><button class="alt" id="talk">Let’s talk about it</button></div>';
+  } else if(step===memories.length+3){
+    h='<h1>'+(answers.gf==="yes"?"Best answer. 🥰":"Of course. Let’s talk.")+'</h1><p>Now, where should we go for dinner?</p><div class="opts">'+
+      ["Indian 🍛","Italian 🍝","Mexican 🌮","Surprise me ✨"].map(function(o){return '<button data-f="'+o+'">'+o+'</button>'}).join("")+'</div>';
+  } else {
+    h='<h1>It’s a date.</h1><p>'+(answers.food?esc(answers.food)+" it is. ":"")+'I’ll handle the reservation. Tap below to send me your answer.</p><a class="btn" href="'+smsLink()+'">Text my answer</a>';
+  }
+  app.innerHTML=h;
+  var n=document.getElementById("n"); if(n) n.onclick=function(){go(step+1)};
+  var y=document.getElementById("yes"); if(y) y.onclick=function(){answers.gf="yes";confetti();go(step+1)};
+  var t=document.getElementById("talk"); if(t) t.onclick=function(){answers.gf="talk";go(step+1)};
+  Array.prototype.forEach.call(app.querySelectorAll("[data-f]"),function(b){b.onclick=function(){answers.food=b.getAttribute("data-f");go(step+1)}});
+}
+render();
+</script>
+</body>
+</html>
