@@ -107,9 +107,11 @@ function render(){
   } else if(step===memories.length+4){
     h='<p class="big">I’m impressed you made it through the whole story.</p><h1>Are you ready?</h1><button id="n">Next</button>';
   } else if(step===memories.length+5){
-    h=lowes?'<p class="big">Alright I’m going to the Loews.</p>':'<h1>Aashvi, will you be my girlfriend?</h1><div class="nav"><button id="yes">Yes!</button><button class="alt" id="talk">Ok Bye!</button></div>';
+    h='<h1>Check my drawer 😊</h1><button id="n">Next</button>';
   } else if(step===memories.length+6){
-    h='<h1>'+(answers.gf==="okbye"?"Ok bye. (That’s a yes.) 🥰":"Best answer. 🥰")+'</h1><p>Now, where should we go for dinner?</p><div class="opts">'+
+    h=lowes?'<p class="big">Alright I’m going to the Loews.</p>':'<h1>Aashvi, will you be my girlfriend?</h1><div class="nav"><button id="yes">Yes!</button><button class="alt" id="talk">Ok Bye!</button></div>';
+  } else if(step===memories.length+7){
+    h='<h1>'+(answers.gf==="okbye"?"Ok bye. (That’s a yes.) 🥰":"Best answer. 🥰")+'</h1><p>Now, where should we go to celebrate?</p><div class="opts">'+
       ["Indian 🍛","Italian 🍝","Mexican 🌮","Surprise me ✨"].map(function(o){return '<button data-f="'+o+'">'+o+'</button>'}).join("")+'</div>';
   } else {
     h='<h1>It’s a date.</h1><p>'+(answers.food?esc(answers.food)+" it is. ":"")+'I’ll handle the reservation.</p>';
